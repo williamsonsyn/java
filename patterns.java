@@ -39,7 +39,7 @@ public class patterns{
         System.out.println();
         }
     }
-    public static void floyds_triangle(int totrows){
+    static void floyds_triangle(int totrows){
         int a=1;
         for(int i=1;i<=totrows;i++){
             for(int j=1;j<=i;j++){

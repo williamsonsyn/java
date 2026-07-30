@@ -1,5 +1,4 @@
 
-import java.util.Scanner;
 
 public class array2d{
     public static void printSpiral(int matrix[][]){
@@ -31,22 +30,57 @@ public class array2d{
             endCol--;
         }
     }
-        public static void main(String[] args){
-        int matrix[][]= new int[4][4];
-        int n=matrix.length,m=matrix[0].length;
-        Scanner sc = new Scanner(System.in);
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                matrix[i][j]=sc.nextInt();
+    public static void DiagonalSum(int matrix[][]){
+        int sum=0;
+        for(int i=0;i<matrix.length;i++){
+            int j=matrix.length-i-1;
+            sum+=matrix[i][i];
+            if(i!=j){
+                sum+=matrix[i][j];
             }
         }
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                System.out.print(matrix[i][j]+" ");
-            }
-            System.out.println();
-        }
-        printSpiral(matrix);
+        System.out.println(sum);   
     }
+    public static boolean StaircaseSearch(int matrix[][],int key){
+        int row = 0,col = matrix[0].length-1;
+        while(row < matrix.length && col >= 0){
+            if(matrix[row][col]==key){
+                System.out.println("Found key at("+row+","+col+")");
+                return true;
+            }
+            else if(key<matrix[row][col]){
+                col--;
+            }
+            else{
+                row++;
+            }
+        }
+        System.out.println("key not found");
+        return false;
+    }
+    public static void main(String[] args){
+        // int matrix[][]= new int[4][4];
+        // int n=matrix.length,m=matrix[0].length;
+        // Scanner sc = new Scanner(System.in);
+        // for(int i=0;i<n;i++){
+        //     for(int j=0;j<m;j++){
+        //         matrix[i][j]=sc.nextInt();
+        //     }
+        // }
+        // for(int i=0;i<n;i++){
+        //     for(int j=0;j<m;j++){
+        //         System.out.print(matrix[i][j]+" ");
+        //     }
+        //     System.out.println();
+        // }
+        // DiagonalSum(matrix);
+        int matrix[][]={{10, 20, 30, 40},
+                        {15, 25, 35, 45},
+                        {27, 29, 37, 48},
+                        {32, 33, 39, 50}};
+        int key = 33;
+        StaircaseSearch(matrix, key);
+    }
+    
 
 }
